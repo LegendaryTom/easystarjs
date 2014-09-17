@@ -329,7 +329,7 @@ EasyStar.js = function() {
 		if (instance.nodeHash[x + "_" + y]!==undefined) {
 			return instance.nodeHash[x + "_" + y];
 		}
-		var simpleDistanceToTarget = getDistance(x, y, instance.endX, instance.endY);
+		var simpleDistanceToTarget = getDistance(x, y, instance.endX, instance.endY, cost);
 		if (parent!==null) {
 			var costSoFar = parent.costSoFar + cost;
 		} else {
@@ -340,7 +340,7 @@ EasyStar.js = function() {
 		return node;
 	};
 
-	var getDistance = function(x1,y1,x2,y2) {
-		return Math.sqrt(Math.abs(x2-x1)*Math.abs(x2-x1) + Math.abs(y2-y1)*Math.abs(y2-y1)) * STRAIGHT_COST;
+	var getDistance = function(x1,y1,x2,y2, cost) {
+		return Math.sqrt(Math.abs(x2-x1)*Math.abs(x2-x1) + Math.abs(y2-y1)*Math.abs(y2-y1)) * cost;
 	};
 }
